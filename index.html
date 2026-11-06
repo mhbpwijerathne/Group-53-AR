@@ -27,16 +27,14 @@
         <a-asset-item id="car-model" src="car.glb"></a-asset-item>
       </a-assets>
 
-      
-      <a-light type="ambient" intensity="1.5"></a-light>
-      <a-light type="directional" position="1 4 2" intensity="1.5"></a-light>
+      <a-light type="ambient" intensity="3.0"></a-light>
+      <a-light type="directional" position="1 5 3" intensity="2.0"></a-light>
 
       <a-marker preset="hiro" id="hiro-marker">
-        
         <a-entity 
           gltf-model="#car-model" 
-          position="0 0 0" 
-          scale="0.08 0.08 0.08"
+          position="0 0.2 0" 
+          scale="0.06 0.06 0.06"
           animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
         </a-entity>
       </a-marker>
