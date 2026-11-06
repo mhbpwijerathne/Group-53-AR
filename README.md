@@ -33,6 +33,3 @@ Hosted over HTTPS: <ADD YOUR NETLIFY / GITHUB PAGES LINK>
 
 ## Group 53
 
-## Author
-
-- Harsha Wijerathne 
