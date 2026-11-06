@@ -22,20 +22,24 @@
   <body style="margin: 0px; overflow: hidden;">
     <div id="status-banner">Searching for Marker...</div>
 
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" renderer="colorManagement: true; exposure: 2.0;">
       <a-assets>
         <a-asset-item id="car-model" src="car.glb"></a-asset-item>
       </a-assets>
 
-      <a-light type="ambient" intensity="3.0"></a-light>
-      <a-light type="directional" position="1 5 3" intensity="2.0"></a-light>
+      <a-light type="ambient" color="#ffffff" intensity="5.0"></a-light>
+      <a-light type="directional" position="0 10 10" intensity="3.0"></a-light>
+      <a-light type="directional" position="0 -10 -10" intensity="2.0"></a-light>
+      <a-light type="directional" position="10 10 0" intensity="2.0"></a-light>
+      <a-light type="directional" position="-10 10 0" intensity="2.0"></a-light>
 
       <a-marker preset="hiro" id="hiro-marker">
         <a-entity 
           gltf-model="#car-model" 
           position="0 0.2 0" 
+          rotation="20 0 0"
           scale="0.06 0.06 0.06"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
+          animation="property: rotation; to: 20 360 0; loop: true; dur: 8000">
         </a-entity>
       </a-marker>
 
