@@ -13,7 +13,7 @@ A marker-based AR scene (A-Frame + AR.js, Hiro marker): a car on a rotating show
 
 ## Live Demo
 
-Hosted over HTTPS: <ADD YOUR NETLIFY / GITHUB PAGES LINK>
+Hosted over HTTPS: https://mhbpwijerathne.github.io/Group-53-AR/
 
 ## How to Use
 
