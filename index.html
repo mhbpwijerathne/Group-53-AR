@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AR Activity</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    
+    <style>
+      #status-banner {
+        position: absolute; top: 10px; width: 100%; text-align: center;
+        padding: 10px; background: red; color: white; font-weight: bold;
+        z-index: 1000; font-family: Arial, sans-serif;
+      }
+    </style>
+
+    <script>
+      
+      AFRAME.registerComponent('tap-grow', {
+        init: function () {
+          this.el.addEventListener('click', () => {
+            let scale = this.el.getAttribute('scale');
+            this.el.setAttribute('scale', {x: scale.x + 0.5, y: scale.y + 0.5, z: scale.z + 0.5});
+          });
+        }
+      });
+
+      
+      AFRAME.registerComponent('marker-handler', {
+        init: function () {
+          let banner = document.getElementById('status-banner');
+          this.el.addEventListener('markerFound', () => {
+            banner.innerText = "Marker Found!";
+            banner.style.background = "green";
+          });
+          this.el.addEventListener('markerLost', () => {
+            banner.innerText = "Searching for Marker...";
+            banner.style.background = "red";
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <div id="status-banner">Searching for Marker...</div>
+    
+    <a-scene embedded arjs vr-mode-ui="enabled: false;" cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+      
+      <a-assets>
+        
+        <a-asset-item id="my-model" src="car.glb"></a-asset-item>
+      </a-assets>
+
+      <a-marker preset="hiro" marker-handler>
+        
+        <a-box position="-1 0.5 0" color="blue" animation="property: rotation; to: 0 360 0; loop: true; dur: 2000"></a-box>
+        
+        
+        <a-sphere position="1 0.5 0" radius="0.5" color="red" animation="property: position; to: 1 1 0; dir: alternate; loop: true; dur: 1000"></a-sphere>
+        
+        
+        <a-cylinder class="clickable" tap-grow position="0 0.5 -1" radius="0.3" height="1" color="yellow"></a-cylinder>
+        
+        
+        <a-text value="My AR Scene" position="0 1.5 0" align="center" color="white"></a-text>
+
+        
+        <a-entity gltf-model="#my-model" position="0 0 1" scale="0.5 0.5 0.5"></a-entity>
+      </a-marker>
+      
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
